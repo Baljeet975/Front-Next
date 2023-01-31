@@ -6,6 +6,7 @@ import {
   MDBCardText,
   MDBCardImage,
   MDBBtn,
+  MDBCheckbox,
 } from "mdb-react-ui-kit";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -90,42 +91,64 @@ const Middle = () => {
 
   return (
     <>
-      <div style={{ marginTop: "30px" }}>
-        <nav className="collapse d-lg-block sidebar collapse bg-white">
-          <Checkbox.Group options={plainOptions} onChange={onChange} />
-        </nav>
-      </div>
-      {/* <div style={{ display: "flex" }}> */}
-
-      <div style={{ marginTop: "30px" }}>
-        <List
-          grid={{
-            gutter: 16,
-            xxl: 4,
+      <div style={{ backgroundColor: "red" }}>
+        {/* <div
+          style={{
+            marginTop: "30px",
+            backgroundColor: "grey",
+            width: "200px",
+            marginLeft: "20px",
           }}
-          dataSource={propertyDatalist}
-          renderItem={(item) => (
-            <List.Item>
-              <Card
-                hoverable
-                style={{ width: 280, height: 350 }}
-                cover={
-                  <img alt="" height={200} src={`${item.propertyimage}`} />
-                }
-              >
-                <Meta
-                  title={item.propertyname}
-                  description={item.propertytype}
-                />
-                <Meta title={item.zipcode} />
-                <Meta title={item.city} />
-                <Meta title={`$${item.price}`} />
-              </Card>
-            </List.Item>
-          )}
+        > */}
+        <Checkbox.Group
+          options={plainOptions}
+          onChange={onChange}
+          style={{
+            // display: "inline-block",
+            marginTop: "10px",
+            marginLeft: "20px",
+          }}
         />
+        {/* </div> */}
+        {/* <div style={{ display: "flex" }}> */}
+
+        <div
+          style={{
+            marginTop: "30px",
+            alignItems: "center",
+            display: "flex",
+            marginLeft: "20px",
+          }}
+        >
+          <List
+            grid={{
+              gutter: 16,
+              xxl: 4,
+            }}
+            // style={{ margin: "20px" }}
+            dataSource={propertyDatalist}
+            renderItem={(item) => (
+              <List.Item>
+                <Card
+                  hoverable
+                  style={{ width: 260, height: 350 }}
+                  cover={
+                    <img alt="" height={200} src={`${item.propertyimage}`} />
+                  }
+                >
+                  <Meta
+                    title={item.propertyname}
+                    description={item.propertytype}
+                  />
+                  <Meta title={item.zipcode} />
+                  <Meta title={item.city} />
+                  <Meta title={`$${item.price}`} />
+                </Card>
+              </List.Item>
+            )}
+          />
+        </div>
       </div>
-      {/* </div> */}
     </>
   );
 };

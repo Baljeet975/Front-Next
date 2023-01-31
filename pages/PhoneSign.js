@@ -27,7 +27,7 @@ const PhoneSignUp = () => {
 
     try {
       const response = await setUpRecaptcha(number);
-      await axios
+      axios
         .post(`http://localhost:1998/user/signup`, {
           number,
         })
