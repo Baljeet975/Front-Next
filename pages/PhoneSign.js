@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -17,6 +17,7 @@ const PhoneSignUp = () => {
   const [otp, setOtp] = useState("");
   const [result, setResult] = useState("");
   const router = useRouter();
+  const [correctData, setCorrectData] = useState("");
 
   const getOtp = async (e) => {
     e.preventDefault();
@@ -27,20 +28,24 @@ const PhoneSignUp = () => {
 
     try {
       const response = await setUpRecaptcha(number);
-      axios
-        .post(`http://localhost:1998/user/signup`, {
-          number,
-        })
-        .then((res) => {
-          console.log(res, "res");
-        });
-
       setResult(response);
       setFlag(true);
-      // handleSign();
     } catch (err) {
       console.log("error");
     }
+  };
+
+  useEffect(() => {
+    dataShow();
+  }, []);
+  const dataShow = () => {
+    axios.get(`http://localhost:1998/user`).then((res) => {
+      console.log(res, "Response");
+      console.log(res?.data?.userData, "Response");
+      const showData = res?.data?.userData;
+      console.log(showData);
+      setCorrectData(showData);
+    });
   };
 
   const verifyOtp = async (e) => {
@@ -50,13 +55,32 @@ const PhoneSignUp = () => {
     try {
       await result.confirm(otp);
 
-      router.push("/Homepage");
+      const show = { number };
+      console.log(show, "Show");
+
+      const { data } = await axios.post(`http://localhost:1998/user/login`, {
+        number,
+      });
+
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${data["token"]}`;
+      localStorage.setItem("access_token1", JSON.stringify(data.token));
+      console.log(localStorage, "localStorage");
       message.success("Verified");
-      //   navigate("/home");
+      router.push("/components");
     } catch (err) {
-      console.log("error");
-      //   setError(err.message);
+        .post(`http://localhost:1998/user/login`, {
+          number,
+        })
+        .then((res) => {
+          console.log(res, "res");
+        });
     }
+    // message.error("Try Again");
+    // router.back("/Home");
+
+    //   setError(err.message);
   };
 
   // const handleSign = () => {

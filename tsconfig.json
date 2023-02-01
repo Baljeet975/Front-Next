@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/context/UserAuthContext.js", "pages/PhoneSign.js", "pages/Sider.js", "pages/Middle.tsx", "pages/Top.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/context/UserAuthContext.js", "pages/PhoneSign.js", "pages/Sider.js", "pages/Middle.tsx", "pages/Top.js", "pages/PropertySite.js", "pages/_app.tsx"],
   "exclude": ["node_modules"]
 }

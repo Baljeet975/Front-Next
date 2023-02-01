@@ -16,11 +16,11 @@ const Admintop = () => {
   const logout = (e) => {
     e.preventDefault();
     console.log("Logout");
-    // localStorage.removeItem(token);
     localStorage.clear();
     sessionStorage.clear();
-    // window.location.reload();
-    router.push("/Login");
+    // firebaselocalStorage.clear();
+    // window.firebaseLocalStorage.clear();
+    router.push("/");
   };
 
   // useEffect(() => {

@@ -6,6 +6,7 @@ import styles from "@/styles/Home.module.css";
 import Lastinfo from "./LastInfo";
 import Middle from "./Middle";
 import Top from "./Top";
+import App from "./_app";
 // import Sider from "./Sider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,13 +36,8 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Top />
-        {/* <div style={{ display: "flex" }}> */}
-        {/* <div style={{ marginTop: "30px", backgroundColor: "gray" }}> */}
-        {/* <Sider /> */}
-        {/* </div> */}
-        {/* <div style={{ marginTop: "30px", marginLeft: "30px" }}> */}
+
         <Middle />
-        {/* </div> */}
         <Lastinfo />
       </div>
     </>
