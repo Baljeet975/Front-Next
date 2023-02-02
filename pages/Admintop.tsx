@@ -67,7 +67,7 @@ const Admintop = () => {
               </a>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link" href="/Homepage">
+                  <a className="nav-link" href="/components">
                     Home
                   </a>
                 </li>
@@ -77,7 +77,7 @@ const Admintop = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Properties">
+                  <a className="nav-link" href="#">
                     Properties
                   </a>
                 </li>

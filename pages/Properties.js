@@ -412,166 +412,179 @@ const Properties = () => {
     <>
       <Admintop />
 
-      <Button type="primary" onClick={showModal}>
-        Add New Property Details
-      </Button>
-      <Modal
-        title="Basic Modal"
-        open={isModalOpen}
-        onOk={addproperty}
-        onCancel={handleCancel}
-      >
-        <Form
-          labelCol={{ span: 10 }}
-          wrapperCol={{ span: 14 }}
-          name="basic"
-          initialValues={{
-            remember: true,
+      <div style={{ background: "grey" }}>
+        <Button
+          type="primary"
+          onClick={showModal}
+          style={{
+            marginTop: "20px",
+            width: "200px",
+            display: "flex",
+            marginLeft: "30px",
+            // alignItems: "right",
           }}
-          style={{ margin: 20 }}
-          autoComplete="off"
         >
-          <Form.Item label="Apartment Name" rules={[{ type: "text" }]}>
-            <Input
-              value={propertyname}
-              onChange={(e) => {
-                setPropertyName(() => {
-                  console.log("propertyname" + e.target.value);
-                  return e.target.value;
-                });
-              }}
-            ></Input>
-          </Form.Item>
-          <Form.Item label="Property Type" rules={[{ type: "text" }]}>
-            <Input
-              value={propertytype}
-              onChange={(e) => {
-                setPropertytype(() => {
-                  console.log("propertytype" + e.target.value);
-                  return e.target.value;
-                });
-              }}
-            ></Input>
-          </Form.Item>
-          <Form.Item label="City" rules={[{ type: "text" }]}>
-            <Input
-              value={city}
-              onChange={(e) => {
-                setCity(() => {
-                  console.log("city" + e.target.value);
-                  return e.target.value;
-                });
-              }}
-            ></Input>
-          </Form.Item>
-          <Form.Item label="Zip Code" rules={[{ type: "text" }]}>
-            <Input
-              value={zipcode}
-              onChange={(e) => {
-                setZipCode(() => {
-                  console.log("zipcode" + e.target.value);
-                  return e.target.value;
-                });
-              }}
-            ></Input>
-          </Form.Item>
-          <Form.Item label="Price" rules={[{ type: "text" }]}>
-            <Input
-              value={price}
-              onChange={(e) => {
-                setPrice(() => {
-                  console.log("price" + e.target.value);
-                  return e.target.value;
-                });
-              }}
-            ></Input>
-          </Form.Item>
-          <Form.Item>
-            <Upload.Dragger {...props}>
-              <Button icon={<UploadOutlined />}>Upload </Button>
-            </Upload.Dragger>
-          </Form.Item>
-        </Form>
-      </Modal>
+          Add New Property Details
+        </Button>
+        <Modal
+          title="Basic Modal"
+          open={isModalOpen}
+          onOk={addproperty}
+          onCancel={handleCancel}
+        >
+          <Form
+            labelCol={{ span: 10 }}
+            wrapperCol={{ span: 14 }}
+            name="basic"
+            initialValues={{
+              remember: true,
+            }}
+            style={{ margin: 20 }}
+            autoComplete="off"
+          >
+            <Form.Item label="Apartment Name" rules={[{ type: "text" }]}>
+              <Input
+                value={propertyname}
+                onChange={(e) => {
+                  setPropertyName(() => {
+                    console.log("propertyname" + e.target.value);
+                    return e.target.value;
+                  });
+                }}
+              ></Input>
+            </Form.Item>
+            <Form.Item label="Property Type" rules={[{ type: "text" }]}>
+              <Input
+                value={propertytype}
+                onChange={(e) => {
+                  setPropertytype(() => {
+                    console.log("propertytype" + e.target.value);
+                    return e.target.value;
+                  });
+                }}
+              ></Input>
+            </Form.Item>
+            <Form.Item label="City" rules={[{ type: "text" }]}>
+              <Input
+                value={city}
+                onChange={(e) => {
+                  setCity(() => {
+                    console.log("city" + e.target.value);
+                    return e.target.value;
+                  });
+                }}
+              ></Input>
+            </Form.Item>
+            <Form.Item label="Zip Code" rules={[{ type: "text" }]}>
+              <Input
+                value={zipcode}
+                onChange={(e) => {
+                  setZipCode(() => {
+                    console.log("zipcode" + e.target.value);
+                    return e.target.value;
+                  });
+                }}
+              ></Input>
+            </Form.Item>
+            <Form.Item label="Price" rules={[{ type: "text" }]}>
+              <Input
+                value={price}
+                onChange={(e) => {
+                  setPrice(() => {
+                    console.log("price" + e.target.value);
+                    return e.target.value;
+                  });
+                }}
+              ></Input>
+            </Form.Item>
+            <Form.Item>
+              <Upload.Dragger {...props}>
+                <Button icon={<UploadOutlined />}>Upload </Button>
+              </Upload.Dragger>
+            </Form.Item>
+          </Form>
+        </Modal>
 
-      <Modal
-        title=" Edit Property"
-        open={isEditing}
-        onText="Save"
-        onCancel={() => {
-          resetEditing();
-        }}
-        onOk={() => {
-          setState((pre) => {
-            console.log(pre, "s");
-            console.log(editingproperty, "kk");
-            editProperty(editingproperty._id);
-            return pre.map((Property) => {
-              console.log(Property, "gdh");
-              if (Property._id === editingproperty._id) {
-                return editProperty;
-              } else {
-                return Property;
-              }
-            });
-          });
-          setIsEditing(false);
-        }}
-      >
-        <Form>
-          <Form.Item label="Name">
-            <Input
-              value={editingproperty?.propertyname}
-              onChange={(e) => {
-                setEditingProperty((pre) => {
-                  return { ...pre, propertyname: e.target.value };
-                });
-              }}
-            />
-          </Form.Item>
-          <Form.Item label="Type">
-            <Input
-              value={editingproperty?.propertytype}
-              onChange={(e) => {
-                setEditingProperty((pre) => {
-                  return { ...pre, propertytype: e.target.value };
-                });
-              }}
-            />
-          </Form.Item>
-          <Form.Item label="City">
-            <Input
-              value={editingproperty?.city}
-              onChange={(e) => {
-                setEditingProperty((pre) => {
-                  return { ...pre, city: e.target.value };
-                });
-              }}
-            />
-          </Form.Item>
-          <Form.Item label="Zip Code">
-            <Input
-              value={editingproperty?.zipcode}
-              onChange={(e) => {
-                setEditingProperty((pre) => {
-                  return { ...pre, zipcode: e.target.value };
-                });
-              }}
-            />
-          </Form.Item>
-        </Form>
-      </Modal>
-
-      <div>
-        <Table
-          columns={columns}
-          dataSource={propertydata}
-          onChange={handleChange}
-          rowKey={(propertydata) => {
-            const id = propertydata?.["_id"];
-            return id;
+        <Modal
+          title=" Edit Property"
+          open={isEditing}
+          onText="Save"
+          onCancel={() => {
+            resetEditing();
           }}
-        />
+          onOk={() => {
+            setState((pre) => {
+              console.log(pre, "s");
+              console.log(editingproperty, "kk");
+              editProperty(editingproperty._id);
+              return pre.map((Property) => {
+                console.log(Property, "gdh");
+                if (Property._id === editingproperty._id) {
+                  return editProperty;
+                } else {
+                  return Property;
+                }
+              });
+            });
+            setIsEditing(false);
+          }}
+        >
+          <Form>
+            <Form.Item label="Name">
+              <Input
+                value={editingproperty?.propertyname}
+                onChange={(e) => {
+                  setEditingProperty((pre) => {
+                    return { ...pre, propertyname: e.target.value };
+                  });
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Type">
+              <Input
+                value={editingproperty?.propertytype}
+                onChange={(e) => {
+                  setEditingProperty((pre) => {
+                    return { ...pre, propertytype: e.target.value };
+                  });
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="City">
+              <Input
+                value={editingproperty?.city}
+                onChange={(e) => {
+                  setEditingProperty((pre) => {
+                    return { ...pre, city: e.target.value };
+                  });
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Zip Code">
+              <Input
+                value={editingproperty?.zipcode}
+                onChange={(e) => {
+                  setEditingProperty((pre) => {
+                    return { ...pre, zipcode: e.target.value };
+                  });
+                }}
+              />
+            </Form.Item>
+          </Form>
+        </Modal>
+
+        <div style={{}}>
+          <Table
+            style={{ width: "95%", marginLeft: "30px" }}
+            columns={columns}
+            dataSource={propertydata}
+            onChange={handleChange}
+            rowKey={(propertydata) => {
+              const id = propertydata?.["_id"];
+              return id;
+            }}
+          />
+        </div>
       </div>
     </>
   );

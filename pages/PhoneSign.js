@@ -54,29 +54,31 @@ const PhoneSignUp = () => {
     if (otp === "" || otp === null) return;
     try {
       await result.confirm(otp);
+      if (number.length >= 1) {
+        const show = { number };
+        console.log(show, "Show");
 
-      const show = { number };
-      console.log(show, "Show");
-
-      const { data } = await axios.post(`http://localhost:1998/user/login`, {
-        number,
-      });
-
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${data["token"]}`;
-      localStorage.setItem("access_token1", JSON.stringify(data.token));
-      console.log(localStorage, "localStorage");
-      message.success("Verified");
-      router.push("/components");
-    } catch (err) {
-        .post(`http://localhost:1998/user/login`, {
+        const { data } = await axios.post(`http://localhost:1998/user/login`, {
           number,
-        })
-        .then((res) => {
-          console.log(res, "res");
         });
-    }
+
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${data["token"]}`;
+        localStorage.setItem("access_token1", JSON.stringify(data.token));
+        console.log(localStorage, "localStorage");
+        message.success("Verified");
+        router.push("/components");
+      } else {
+        axios
+          .post(`http://localhost:1998/user/login`, {
+            number,
+          })
+          .then((res) => {
+            console.log(res, "res");
+          });
+      }
+    } catch (err) {}
     // message.error("Try Again");
     // router.back("/Home");
 
@@ -109,10 +111,7 @@ const PhoneSignUp = () => {
             <div id="recaptcha-container"></div>
           </Form.Group>
           <div className="button-right">
-            {/* <Link to="/"> */}
             <Button variant="secondary">Cancel</Button>
-            {/* </Link> */}
-            {/* &nbsp; */}
             <Button
               type="submit"
               variant="primary"

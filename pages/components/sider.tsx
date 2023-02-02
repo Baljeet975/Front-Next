@@ -15,21 +15,21 @@ const Sider = () => {
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
-              <span>Main dashboard</span>
+              <span>My Profile</span>
             </a>
             <a
-              href="#"
+              href="/Properties"
               className="list-group-item list-group-item-action py-2 ripple active"
             >
               <i className="fas fa-chart-area fa-fw me-3"></i>
-              <span>Webiste traffic</span>
+              <span>Properties</span>
             </a>
             <a
               href="#"
               className="list-group-item list-group-item-action py-2 ripple"
             >
               <i className="fas fa-lock fa-fw me-3"></i>
-              <span>Password</span>
+              <span>Settings</span>
             </a>
             <a
               href="#"
