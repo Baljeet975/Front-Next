@@ -18,23 +18,9 @@ const Admintop = () => {
     console.log("Logout");
     localStorage.clear();
     sessionStorage.clear();
-    // firebaselocalStorage.clear();
-    // window.firebaseLocalStorage.clear();
+
     router.push("/");
   };
-
-  // useEffect(() => {
-  //   userData();
-  // }, []);
-
-  // const userData = (_id) => {
-  //   const token = localStorage.getItem("access_token1");
-
-  //   var decoded = jwt_decode(token);
-
-  //   setName(decoded);
-  //   console.log("token",name)
-  // };
 
   return (
     <>
@@ -83,15 +69,7 @@ const Admintop = () => {
                 </li>
               </ul>
             </div>
-            {/* <div>
-              <MDBBtn
-                onClick={(e) => {
-                  router.push("/Login");
-                }}
-              >
-                Login
-              </MDBBtn>
-            </div> */}
+
             <MDBDropdown>
               <MDBDropdownToggle>Settings</MDBDropdownToggle>
               <MDBDropdownMenu>
@@ -104,25 +82,6 @@ const Admintop = () => {
             </MDBDropdown>
           </div>
         </nav>
-        {/* <div
-    className="p-5 text-center bg-image"
-    style={{
-      backgroundImage: "url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp')",height:"400px"}}
-
-    
-  >
-    <div className="mask" style={{backgroundColor: "rgba(0, 0, 0, 0.6)"}}>
-      <div className="d-flex justify-content-center align-items-center h-100">
-      <div className="input-group rounded">
-  <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-  <span className="input-group-text border-0" id="search-addon">
-    <i className="fas fa-search"></i>
-  </span>
-</div>
-      </div>
-    </div> */}
-
-        {/* </div> */}
       </header>
     </>
   );

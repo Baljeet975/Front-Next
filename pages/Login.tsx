@@ -16,10 +16,6 @@ import { Modal } from "antd";
 import PhoneSignUp from "./PhoneSign";
 
 const Login = () => {
-  const [name, setName] = useState("");
-  console.log("name", name);
-  const [password, setPassword] = useState("");
-  console.log("password", password);
   const [correctdata, setCorrectData] = useState("");
   const router = useRouter();
   const [basicModal, setBasicModal] = useState(false);
@@ -57,33 +53,6 @@ const Login = () => {
       </Modal>
       <div className="card shadow-2-strong" style={{ borderRadius: "1rem" }}>
         <div className="card-body p-5 text-center">
-          {/* <div className="form-outline mb-4">
-            <input
-              type="text"
-              name="name"
-              className="form-control form-control-lg"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label className="form-label">Name</label>
-          </div>
-
-          <div className="form-outline mb-4">
-            <input
-              type="text"
-              name="password"
-              className="form-control form-control-lg"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <label className="form-label">Password</label>
-          </div>
-
-          <button
-            className="btn btn-primary btn-lg btn-block"
-            type="submit"
-            onClick={handleOk}
-          >
-            Login
-          </button> */}
           <button
             className="btn btn-primary btn-lg btn-block"
             onClick={showPhoneModal}

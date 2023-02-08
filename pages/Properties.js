@@ -29,7 +29,6 @@ const Properties = () => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [editingproperty, setEditingProperty] = useState(null);
-  console.log("editing Prop", editingproperty);
   const searchInput = useRef(null);
   const [searchedColumn, setSearchedColumn] = useState("");
   const [searchText, setSearchText] = useState("");
@@ -55,7 +54,6 @@ const Properties = () => {
     axios.get("http://localhost:1998/property").then((res) => {
       console.log(res?.data?.propertyData, "Response");
       const showData = res?.data?.propertyData;
-      console.log(showData);
       setPropertyData(showData);
     });
   };
