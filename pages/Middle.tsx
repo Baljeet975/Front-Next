@@ -20,6 +20,7 @@ import {
   Col,
   Button,
 } from "antd";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 const { Search } = Input;
 
@@ -173,8 +174,10 @@ const Middle = () => {
             }}
           >
             <div className="text-center" style={{ marginTop: "50px" }}>
-              <h1 style={{ color: "white", fontWeight: "bold" }}>3456</h1>
-              <p style={{ color: "white" }}>Homes for sale</p>
+              <a href="/components/propertieslist">
+                <h1 style={{ color: "blue", fontWeight: "bold" }}>3456</h1>
+                <p style={{ color: "white" }}>Homes for sale</p>
+              </a>
             </div>
           </div>
           <div
@@ -187,8 +190,10 @@ const Middle = () => {
             }}
           >
             <div className="text-center" style={{ marginTop: "50px" }}>
-              <h1 style={{ color: "white", fontWeight: "bold" }}>152</h1>
-              <p style={{ color: "white" }}>Open houses</p>
+              <a href="/">
+                <h1 style={{ color: "blue", fontWeight: "bold" }}>152</h1>
+                <p style={{ color: "white" }}>Open houses</p>
+              </a>
             </div>
           </div>
           <div
@@ -202,7 +207,8 @@ const Middle = () => {
             }}
           >
             <div className="text-center" style={{ marginTop: "50px" }}>
-              <h1 style={{ color: "white", fontWeight: "bold" }}>793</h1>
+              <a href="/"></a>
+              <h1 style={{ color: "blue", fontWeight: "bold" }}>793</h1>
               <p style={{ color: "white" }}>Recently sold</p>
             </div>
           </div>
@@ -216,8 +222,10 @@ const Middle = () => {
             }}
           >
             <div className="text-center" style={{ marginTop: "50px" }}>
-              <h1 style={{ color: "white", fontWeight: "bold" }}>97</h1>
-              <p style={{ color: "white" }}>Price reduced</p>
+              <a>
+                <h1 style={{ color: "blue", fontWeight: "bold" }}>97</h1>
+                <p style={{ color: "white" }}>Price reduced</p>
+              </a>
             </div>
           </div>
         </div>

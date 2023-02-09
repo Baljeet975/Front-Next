@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Top from "../Top";
 import Lastinfo from "../LastInfo";
 import {
@@ -8,8 +8,20 @@ import {
   MDBDropdownItem,
   MDBBtn,
 } from "mdb-react-ui-kit";
+import axios from "axios";
 
 const homepage = () => {
+  useEffect(() => {
+    console.log(_id, "productid");
+    viewProperty(_id);
+  }, []);
+  const viewProperty = async (_id) => {
+    console.log(_id);
+    await axios.get(`http://localhost:1998/property/${_id}`, {}).then((res) => {
+      console.log("res", res);
+    });
+  };
+
   return (
     <>
       <div className="container-fluid">

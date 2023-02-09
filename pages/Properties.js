@@ -12,7 +12,6 @@ import {
 import { Space, Skeleton } from "antd";
 import Highlighter from "react-highlight-words";
 import Admintop from "./Admintop";
-// import FormItem from "antd/es/form/FormItem";
 
 const Properties = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
