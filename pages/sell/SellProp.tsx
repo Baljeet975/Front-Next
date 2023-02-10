@@ -62,7 +62,10 @@ const SellProp = () => {
           <p className="text-center" style={{ color: "white" }}>
             {" "}
             If you’re planning for the future our{" "}
-            <a href="/guide">Seller Guide</a> can help.
+            <a href="/guide">
+              <ins>Seller Guide</ins>
+            </a>{" "}
+            can help.
           </p>
         </div>
         <div>
@@ -96,7 +99,9 @@ const SellProp = () => {
               <MDBCard>
                 <MDBCardBody>
                   <MDBCardText>
-                    <a href="/howIsell">Should I sell my home now?</a>
+                    <a href="/sell/sellsold" style={{ marginLeft: "25%" }}>
+                      <ins>Should I sell my home now?</ins>
+                    </a>
                   </MDBCardText>
                 </MDBCardBody>
               </MDBCard>
@@ -105,7 +110,9 @@ const SellProp = () => {
               <MDBCard>
                 <MDBCardBody>
                   <MDBCardText>
-                    <a href="/homeworth">How much is my home worth?</a>
+                    <a style={{ marginLeft: "25%" }} href="/sell/sellworth">
+                      <ins>How much is my home worth?</ins>
+                    </a>
                   </MDBCardText>
                 </MDBCardBody>
               </MDBCard>
@@ -115,7 +122,9 @@ const SellProp = () => {
               <MDBCard>
                 <MDBCardBody>
                   <MDBCardText>
-                    <a href="/helptosell">How should i sell my home?</a>
+                    <a style={{ marginLeft: "25%" }} href="/sell/selldocs">
+                      <ins>How should i sell my home?</ins>
+                    </a>
                   </MDBCardText>
                 </MDBCardBody>
               </MDBCard>

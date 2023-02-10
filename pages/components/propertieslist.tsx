@@ -7,6 +7,19 @@ import LocalSider from "../LocalSider";
 import { Link } from "react-router-dom";
 import Lastinfo from "../LastInfo";
 import { Router } from "next/router";
+import {
+  MDBDropdown,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBDropdownItem,
+  MDBIcon,
+} from "mdb-react-ui-kit";
+import {
+  BankOutlined,
+  EnvironmentOutlined,
+  HomeOutlined,
+  InsertRowRightOutlined,
+} from "@ant-design/icons";
 
 const propertieslist = () => {
   const [propertyDatalist, setPropertyDatalist] = useState([]);
@@ -192,39 +205,61 @@ const propertieslist = () => {
               placeholder="Search"
               aria-label="Search"
               onChange={onSearchChange}
-              // onChange={(e) => {
-              //   setPropertyType(e.target.value);
-              // }}
               aria-describedby="search-addon"
               style={{ height: "60px", width: "80%" }}
             />
-
-            <button
-              type="button"
-              className="btn btn-primary btn-rounded"
-              // onChange={onChange}
-              // onClick={onSearchChange}
-            >
+            <button type="button" className="btn btn-primary btn-rounded">
               search
             </button>
           </div>
         </div>
-        <div style={{ display: "flex", marginTop: "15%" }}>
+        <div style={{ display: "", marginTop: "15%" }}>
           <div style={{ marginTop: "30px" }}>
             <nav
               id="sidebarMenu"
               className="collapse d-lg-block sidebar collapse bg-white"
             >
-              <Checkbox.Group
-                className="ant-checkbox-group-item"
-                options={plainOptions}
-                onChange={onChange}
-                style={{
-                  display: "inline-block",
-                  verticalAlign: "Middle",
-                  flexDirection: "initial",
-                }}
-              />
+              <div style={{ display: "flex" }}>
+                <MDBDropdown>
+                  <MDBDropdownToggle>Property Type</MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <Checkbox.Group
+                      className="ant-checkbox-group-item"
+                      options={plainOptions}
+                      onChange={onChange}
+                    />
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+                <MDBDropdown style={{ marginLeft: "20px" }}>
+                  <MDBDropdownToggle>Beds</MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <a href="#" style={{ fontSize: "20px" }}>
+                      <HomeOutlined></HomeOutlined>
+                    </a>
+
+                    <br />
+                    <a href="#" style={{ fontSize: "20px" }}>
+                      <BankOutlined />
+                    </a>
+                    <br />
+                    <a href="#" style={{ fontSize: "20px" }}>
+                      <EnvironmentOutlined />
+                    </a>
+                    <br />
+                    <a href="#" style={{ fontSize: "20px" }}>
+                      <InsertRowRightOutlined />
+                    </a>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+                {/* <MDBDropdown style={{ marginLeft: "20px" }}>
+                  <MDBDropdownToggle>Beds</MDBDropdownToggle>
+                  <MDBDropdownMenu></MDBDropdownMenu>
+                </MDBDropdown>
+                <MDBDropdown style={{ marginLeft: "20px" }}>
+                  <MDBDropdownToggle>Beds</MDBDropdownToggle>
+                  <MDBDropdownMenu></MDBDropdownMenu>
+                </MDBDropdown> */}
+              </div>
             </nav>
           </div>
 
@@ -232,8 +267,10 @@ const propertieslist = () => {
             style={{
               marginTop: "30px",
               alignItems: "center",
-              display: "flex",
-              marginLeft: "20px",
+              backgroundColor: "",
+
+              // display: "flex",
+              // marginLeft: "20px",
             }}
           >
             <List
@@ -243,7 +280,7 @@ const propertieslist = () => {
               }}
               dataSource={propertyDatalist}
               renderItem={(record) => (
-                <List.Item>
+                <List.Item style={{ padding: "40px", marginLeft: "" }}>
                   <a>
                     <Card
                       // onClick={() =>
@@ -272,12 +309,12 @@ const propertieslist = () => {
                       //   });
                       // }}
                       hoverable
-                      style={{ width: 220, height: 300 }}
+                      style={{ width: 350, height: 330 }}
                       cover={
                         <img
                           alt=""
-                          height={220}
-                          width={100}
+                          height={250}
+                          width={140}
                           src={`${record.propertyimage}`}
                         />
                       }
