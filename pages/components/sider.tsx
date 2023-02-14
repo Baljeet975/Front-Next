@@ -10,7 +10,7 @@ const Sider = () => {
         <div className="position-sticky">
           <div className="list-group list-group-flush mx-3 mt-4">
             <a
-              href="#"
+              href="/components/profile/profile"
               className="list-group-item list-group-item-action py-2 ripple"
               aria-current="true"
             >
@@ -25,11 +25,11 @@ const Sider = () => {
               <span>Properties</span>
             </a>
             <a
-              href="#"
+              href="/components/BuyerList"
               className="list-group-item list-group-item-action py-2 ripple"
             >
               <i className="fas fa-lock fa-fw me-3"></i>
-              <span>Settings</span>
+              <span>Buyer's List</span>
             </a>
             <a
               href="#"

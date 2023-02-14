@@ -23,7 +23,7 @@ const Properties = () => {
   const [price, setPrice] = useState("");
 
   const [city, setCity] = useState("");
-  const [documentfile, setDocumentFile] = useState("");
+  const [image, setImage] = useState("");
   const [propertydata, setPropertyData] = useState("");
   const [filteredInfo, setFilteredInfo] = useState({});
   const [isEditing, setIsEditing] = useState(false);
@@ -62,14 +62,13 @@ const Properties = () => {
       const isfile =
         file.type === "image/png" ||
         file.type === "image/jpeg" ||
-        file.type === "application/msword" ||
-        file.type === "application/pdf";
+
       if (!isfile) {
-        message.error("only jpeg,pdf,doc and png file upload");
+        message.error("only jpeg and png file upload");
       } else {
         message.success("Yes File is Upload ");
       }
-      setDocumentFile(file);
+      setImage(file);
       console.log("aaaaa", file);
       return (isfile && false) || Upload.LIST_IGNORE;
     },
@@ -104,12 +103,12 @@ const Properties = () => {
 
   const addproperty = () => {
     const formData = new FormData();
-    formData.append("image", documentfile);
+    formData.append("image", image);
     formData.append("propertyname", propertyname);
     formData.append("propertytype", propertytype);
     formData.append("zipcode", zipcode);
     formData.append("city", city);
-    console.log("image", documentfile);
+  
     axios
       .post(`http://localhost:1998/property/add`, formData)
       .then((response) => {
