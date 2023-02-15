@@ -1,9 +1,7 @@
-import { Button, Card, Checkbox, List } from "antd";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import Top from "../Top";
-import LocalSider from "../LocalSider";
 import { Link } from "react-router-dom";
 import Lastinfo from "../LastInfo";
 import { Router } from "next/router";
@@ -13,13 +11,9 @@ import {
   MDBDropdownToggle,
   MDBDropdownItem,
   MDBIcon,
+  MDBBtn,
 } from "mdb-react-ui-kit";
-import {
-  BankOutlined,
-  EnvironmentOutlined,
-  HomeOutlined,
-  InsertRowRightOutlined,
-} from "@ant-design/icons";
+import { Select, Card, Checkbox, List, Button } from "antd";
 
 const propertieslist = () => {
   const [propertyDatalist, setPropertyDatalist] = useState([]);
@@ -28,8 +22,10 @@ const propertieslist = () => {
   const [propertyimage, setPropertyImage] = useState("");
   const [addprop, setAddProp] = useState("");
   const [propertytype, setPropertyType] = useState("");
-  console.log("type", propertytype);
+  const [bedroom, setBedRoom] = useState("");
   const [city, setCity] = useState("");
+  const [bathroom, setBathroom] = useState("");
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     getpropertydata();
@@ -41,7 +37,6 @@ const propertieslist = () => {
         propertytype,
       })
       .then((res) => {
-        // console.log("property111", res?.data?.propertyData);
         setPropertyDatalist(res?.data?.propertyData);
         for (let p = 0; p < res?.data?.propertyData.length; p++) {
           if (res?.data?.propertyData[p].image === "") {
@@ -70,7 +65,6 @@ const propertieslist = () => {
 
   const onChange = (checkedValues) => {
     const propertytype = checkedValues;
-    // console.log("checked value", checkedValues);
 
     if (checkedValues != "") {
       console.log("enter");
@@ -160,17 +154,128 @@ const propertieslist = () => {
     });
   }
 
-  // const onhandle = async (_id) => {
-  //   // console.log("hdghja");
-  //   console.log(_id);
+  const handleChange = (value: string) => {
+    const bedroom = value;
+    const bathroom = value;
 
-  //   await axios
-  //     .get(`http://localhost:1998/property/property/${_id}`, {})
-  //     .then((res) => {
-  //       console.log("res",res)
-  //     });
-  // };
+    console.log(`selected ${value}`);
+    if (value != "") {
+      console.log("enter");
+      axios
+        .post("http://localhost:1998/property/filterdata", {
+          bedroom,
+          bathroom,
+        })
+        .then((res) => {
+          setPropertyDatalist(res?.data?.propertyData);
+          for (let p = 0; p < res?.data?.propertyData.length; p++) {
+            if (res?.data?.propertyData[p].image === "") {
+              res.data.propertyData[p].propertyimage = "property_not_found.png";
+            } else {
+              res.data.propertyData[
+                p
+              ].propertyimage = `http://localhost:1998/images/${res.data.propertyData[p].image}`;
+            }
+          }
+        });
+    } else {
+      console.log("fffff");
+      axios
+        .post("http://localhost:1998/property/filterdata", {})
+        .then((res) => {
+          setPropertyDatalist(res?.data?.propertyData);
+          for (let p = 0; p < res?.data?.propertyData.length; p++) {
+            if (res?.data?.propertyData[p].image === "") {
+              res.data.propertyData[p].propertyimage = "property_not_found.png";
+            } else {
+              res.data.propertyData[
+                p
+              ].propertyimage = `http://localhost:1998/images/${res.data.propertyData[p].image}`;
+            }
+          }
+        });
+    }
+  };
 
+  const handlebath = (value: string) => {
+    const bathroom = value;
+
+    console.log(`selected ${value}`);
+    if (value != "") {
+      console.log("enter");
+      axios
+        .post("http://localhost:1998/property/filterdata", {
+          bathroom,
+        })
+        .then((res) => {
+          setPropertyDatalist(res?.data?.propertyData);
+          for (let p = 0; p < res?.data?.propertyData.length; p++) {
+            if (res?.data?.propertyData[p].image === "") {
+              res.data.propertyData[p].propertyimage = "property_not_found.png";
+            } else {
+              res.data.propertyData[
+                p
+              ].propertyimage = `http://localhost:1998/images/${res.data.propertyData[p].image}`;
+            }
+          }
+        });
+    } else {
+      console.log("fffff");
+      axios
+        .post("http://localhost:1998/property/filterdata", {})
+        .then((res) => {
+          setPropertyDatalist(res?.data?.propertyData);
+          for (let p = 0; p < res?.data?.propertyData.length; p++) {
+            if (res?.data?.propertyData[p].image === "") {
+              res.data.propertyData[p].propertyimage = "property_not_found.png";
+            } else {
+              res.data.propertyData[
+                p
+              ].propertyimage = `http://localhost:1998/images/${res.data.propertyData[p].image}`;
+            }
+          }
+        });
+    }
+  };
+
+  const handleStatus = (value: string) => {
+    const status = value;
+    console.log("status", status);
+    if (value != "") {
+      axios
+        .post("http://localhost:1998/property/filterdata", {
+          status,
+        })
+        .then((res) => {
+          setPropertyDatalist(res?.data?.propertyData);
+          for (let p = 0; p < res?.data?.propertyData.length; p++) {
+            if (res?.data?.propertyData[p].image === "") {
+              res.data.propertyData[p].propertyimage = "property_not_found.png";
+            } else {
+              res.data.propertyData[
+                p
+              ].propertyimage = `http://localhost:1998/images/${res.data.propertyData[p].image}`;
+            }
+          }
+        });
+    } else {
+      console.log("fffff");
+      axios
+        .post("http://localhost:1998/property/filterdata", {})
+        .then((res) => {
+          setPropertyDatalist(res?.data?.propertyData);
+          for (let p = 0; p < res?.data?.propertyData.length; p++) {
+            if (res?.data?.propertyData[p].image === "") {
+              res.data.propertyData[p].propertyimage = "property_not_found.png";
+            } else {
+              res.data.propertyData[
+                p
+              ].propertyimage = `http://localhost:1998/images/${res.data.propertyData[p].image}`;
+            }
+          }
+        });
+    }
+  };
   return (
     <>
       <Top />
@@ -220,8 +325,10 @@ const propertieslist = () => {
               className="collapse d-lg-block sidebar collapse bg-white"
             >
               <div style={{ display: "flex" }}>
-                <MDBDropdown>
-                  <MDBDropdownToggle>Property Type</MDBDropdownToggle>
+                <MDBDropdown style={{ marginLeft: "50px" }}>
+                  <MDBDropdownToggle style={{ width: "250px" }}>
+                    Property Type
+                  </MDBDropdownToggle>
                   <MDBDropdownMenu>
                     <Checkbox.Group
                       className="ant-checkbox-group-item"
@@ -230,35 +337,45 @@ const propertieslist = () => {
                     />
                   </MDBDropdownMenu>
                 </MDBDropdown>
-                <MDBDropdown style={{ marginLeft: "20px" }}>
-                  <MDBDropdownToggle>Beds</MDBDropdownToggle>
-                  <MDBDropdownMenu>
-                    <a href="#" style={{ fontSize: "20px" }}>
-                      <HomeOutlined></HomeOutlined>
-                    </a>
-
-                    <br />
-                    <a href="#" style={{ fontSize: "20px" }}>
-                      <BankOutlined />
-                    </a>
-                    <br />
-                    <a href="#" style={{ fontSize: "20px" }}>
-                      <EnvironmentOutlined />
-                    </a>
-                    <br />
-                    <a href="#" style={{ fontSize: "20px" }}>
-                      <InsertRowRightOutlined />
-                    </a>
-                  </MDBDropdownMenu>
+                <MDBDropdown style={{ marginLeft: "50px" }}>
+                  <Select
+                    defaultValue="Bedroom"
+                    style={{ width: 200 }}
+                    onChange={handleChange}
+                    options={[
+                      { value: "", label: "Any" },
+                      { value: "1", label: "1" },
+                      { value: "2", label: "2" },
+                      { value: "3", label: "3" },
+                    ]}
+                  />
                 </MDBDropdown>
-                {/* <MDBDropdown style={{ marginLeft: "20px" }}>
-                  <MDBDropdownToggle>Beds</MDBDropdownToggle>
-                  <MDBDropdownMenu></MDBDropdownMenu>
+                <MDBDropdown style={{ marginLeft: "50px" }}>
+                  <Select
+                    defaultValue="Bathroom"
+                    style={{ width: 200 }}
+                    // onChange={handlebath}
+                    options={[
+                      { value: "", label: "Any" },
+                      { value: "1", label: "1" },
+                      { value: "2", label: "2" },
+                      { value: "3", label: "3" },
+                    ]}
+                  />
                 </MDBDropdown>
-                <MDBDropdown style={{ marginLeft: "20px" }}>
-                  <MDBDropdownToggle>Beds</MDBDropdownToggle>
-                  <MDBDropdownMenu></MDBDropdownMenu>
-                </MDBDropdown> */}
+                <MDBDropdown style={{ marginLeft: "50px" }}>
+                  <Select
+                    defaultValue="Status"
+                    style={{ width: 200 }}
+                    onChange={handleStatus}
+                    options={[
+                      { value: "", label: "Any" },
+                      { value: "New Construction", label: "New Construction" },
+                      { value: "Recently Sold", label: "Recently Sold" },
+                      { value: "Existing Homes", label: "Existing Homes" },
+                    ]}
+                  />
+                </MDBDropdown>
               </div>
             </nav>
           </div>

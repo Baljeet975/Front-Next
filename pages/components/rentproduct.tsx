@@ -10,18 +10,17 @@ import {
   MDBDropdownItem,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import { Button, Form, Input, message, Modal } from "antd";
+import { Button, Card, Form, Input, message, Modal } from "antd";
 
 // function propertydetails() {
 
 //   return <div>Hello {propertyId}</div>;
 // }
 
-const PropertyItem = () => {
+const RentProduct = () => {
   const router = useRouter();
   const { query } = router;
   const [buyername, setBuyerName] = useState("");
-
   const [buyeremail, setBuyerEmail] = useState("");
   const [buyerphonenumber, setBuyerPhoneNumber] = useState("");
   const [interestedIn, setInterestedIn] = useState("");
@@ -297,7 +296,7 @@ const PropertyItem = () => {
           >
             <div>
               <div>
-                <h1 className="text-center">For Sale</h1>
+                <h1 className="text-center">For Rent</h1>
                 <p className="text-center"> {query.propertyname}</p>
                 <p className="text-center">${query.price}</p>
                 <div
@@ -329,68 +328,58 @@ const PropertyItem = () => {
             </div>
           </div>
         </div>
-        <div>
-          <MDBDropdown>
-            <MDBDropdownToggle style={{ width: "100%", height: "70px" }}>
-              Property Details
-            </MDBDropdownToggle>
-            <MDBDropdownMenu style={{ width: "100%" }}>
-              <MDBDropdownItem>
-                <p className="text-center">
-                  Ready to escape the cold weather and move to beautifully
-                  sunny, SW Florida?? This adorable 2 bedroom, 1 bathroom home
-                  in the Holiday Travel Park 55+ community is ready for its new
-                  owner. This unit consists of newer subfloor, laminate plank
-                  floors throughout the second level, a widened hallway leading
-                  to the master bedroom (to fit a wheelchair), attic exhaust fan
-                  to keep the unit cool in the summer, and sump pump to feed
-                  water out in heavier rains. The Florida room is raised 6 and
-                  is completely tiled. This room has the opportunity to be used
-                  as a flex space, or even a guest bedroom when friends come to
-                  town! The 2nd bedroom could also be used as a dining room,
-                  office, craft room, or additional seating area. One of the
-                  BEST things about living in this community is that you OWN THE
-                  LAND - no land lease fees here. Holiday Travel Park is a gated
-                  community with incredible amenities, to include a beautiful
-                  pool, shuffleboard, bocce ball, horseshoes, community boat
-                  ramp, convenient laundry facilities throughout, and huge
-                  activity center with tons of activities (such as pool tables,
-                  indoor pickleball court, line dancing, card games, and more)!
-                  There is also optional boat/RV storage spaces available for
-                  rent. There is always something fun going on in Holiday Travel
-                  Park: It is truly a community filled with the friendliest of
-                  residents! ALSO INCLUDED in the LOW monthly HOA fee ($115) is
-                  water, sewer, trash pickup, & grounds maintenance. This
-                  location is near ocean access boat ramps & marinas, and is
-                  within 10 minutes of the beautiful Englewood Beaches, cozy
-                  cafes, unique gift shops, gorgeous art galleries & beautiful
-                  boutiques...not to mention historic Dearborn St! Plenty of
-                  outdoor activities to do in this area (such as kayaking and
-                  hiking) and LOTS of beautiful Florida Wildlife to spot - come
-                  check it out TODAY! Welcome to PARADISE!
-                </p>
-              </MDBDropdownItem>
-            </MDBDropdownMenu>
-          </MDBDropdown>
-          <MDBDropdown style={{ marginTop: "30px" }}>
-            <MDBDropdownToggle style={{ width: "100%", height: "70px" }}>
-              Open Houses
-            </MDBDropdownToggle>
-            <MDBDropdownMenu style={{ width: "100%" }}>
-              <MDBDropdownItem>
-                <p className="text-center">
-                  Contact agent for a private showing.
-                </p>
-                <button
-                  className="btn btn-primary btn-rounded"
-                  type="submit"
-                  style={{ marginTop: "5px", marginLeft: "42%" }}
-                >
-                  Request a private Showing.
-                </button>
-              </MDBDropdownItem>
-            </MDBDropdownMenu>
-          </MDBDropdown>
+        <div style={{ marginLeft: "20px" }}>
+          <Card title="Property details">
+            <Card
+              type="inner"
+              title="Property Type"
+              extra={<a href="#">More</a>}
+            >
+              <p>{query.propertytype}</p>
+            </Card>
+            <Card title="Features">
+              <Card
+                type="inner"
+                title="Community Features"
+                extra={<a href="#">More</a>}
+              >
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <p>Parking</p>
+                    <p>Pool</p>
+                    <p>Garage</p>
+                  </div>
+                  <div style={{ marginLeft: "40%" }}>
+                    <p>E-payments</p>
+                    <p>Online portal</p>
+                  </div>
+                </div>
+              </Card>
+            </Card>
+
+            <Card
+              type="inner"
+              title="Unit Features"
+              extra={<a href="#">More</a>}
+            >
+              <div style={{ display: "flex" }}>
+                <div>
+                  <p>Dishwasher</p>
+                  <p>Fireplace</p>
+                  <p>Garbage disposal</p>
+                  <p>Granite counters</p>
+                  <p>In unit laundry</p>
+                </div>
+                <div style={{ marginLeft: "40%" }}>
+                  <p>Oven</p>
+                  <p>Patio / balcony</p>
+                  <p>Range</p>
+                  <p>Refrigerator</p>
+                  <p>Recently renovated</p>
+                </div>
+              </div>
+            </Card>
+          </Card>
         </div>
 
         <div>
@@ -400,4 +389,4 @@ const PropertyItem = () => {
     </>
   );
 };
-export default PropertyItem;
+export default RentProduct;
