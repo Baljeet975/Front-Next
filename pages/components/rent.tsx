@@ -13,6 +13,7 @@ import Meta from "antd/es/card/Meta";
 import axios from "axios";
 import { Router } from "next/router";
 import { useRouter } from "next/router";
+import Lastinfo from "../LastInfo";
 
 const rent = () => {
   const [propertyDatalist, setPropertyDatalist] = useState([]);
@@ -52,7 +53,8 @@ const rent = () => {
           id="sidebarMenu"
           className="collapse d-lg-block sidebar collapse bg-white"
         ></nav>
-        <h3> Apartments and Houses for Rent</h3>
+        <h3 style={{ marginLeft: "20px" }}> Apartments and Houses for Rent</h3>
+
         <div>
           <List
             grid={{
@@ -134,6 +136,7 @@ const rent = () => {
             )}
           />
         </div>
+        <Lastinfo />
       </div>
     </>
   );

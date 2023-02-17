@@ -22,6 +22,7 @@
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
     "firebase": "^8.2.10",
+    "google-maps-react": "^2.0.6",
     "jwt-decode": "^3.1.2",
     "mdb-react-ui-kit": "^5.1.0",
     "mdbootstrap": "^4.20.0",
