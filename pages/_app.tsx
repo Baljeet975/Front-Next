@@ -27,16 +27,16 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <>
-      {/* {isLogin ? ( */}
+      {isLogin ? (
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      {/* ) : (
+      ) : (
         <Home />
-      )} */}
-      {/* <Layout>
+      )}
+      <Layout>
         <Component {...pageProps} />
-      </Layout> */}
+      </Layout>
     </>
   );
 }

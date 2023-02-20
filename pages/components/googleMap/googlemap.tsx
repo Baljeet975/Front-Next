@@ -6,7 +6,6 @@ const customizeMap = {
   width: "100%",
   height: "100%",
 };
-
 class GoogleMapComponent extends React.Component {
   constructor(props) {
     super(props);
